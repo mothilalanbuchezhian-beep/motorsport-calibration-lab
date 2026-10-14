@@ -1,0 +1,19 @@
+VERSION ""
+
+NS_ :
+
+BS_:
+
+BU_: ECU DASH LOGGER
+
+BO_ 256 ENGINE_DATA_1: 8 ECU
+ SG_ EngineSpeed : 0|16@1+ (0.25,0) [0|16383.75] "rpm" DASH,LOGGER
+ SG_ ThrottlePos : 16|8@1+ (0.4,0) [0|100] "%" DASH,LOGGER
+ SG_ CoolantTemp : 24|8@1+ (1,-40) [-40|215] "degC" DASH,LOGGER
+ SG_ MAP : 32|16@1+ (0.1,0) [0|6553.5] "kPa" DASH,LOGGER
+
+BO_ 257 ENGINE_DATA_2: 8 ECU
+ SG_ Lambda : 0|16@1+ (0.001,0) [0|2] "-" DASH,LOGGER
+
+CM_ SG_ 256 EngineSpeed "Crankshaft speed";
+CM_ SG_ 257 Lambda "Air-fuel ratio relative to stoichiometric";

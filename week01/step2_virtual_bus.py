@@ -31,7 +31,7 @@ for step in range(300):                      # 300 steps x 10 ms = 3 seconds
     ecu.send(can.Message(arbitration_id=msg1.frame_id, data=data1, is_extended_id=False))
 
     if step % 10 == 0:                       # ENGINE_DATA_2 only every 100 ms
-        data2 = msg2.encode({"Lambda": 1.0 + 0.05 * math.sin(t)})
+        data2 = msg2.encode({"Lambda": 1.0 + 0.05 * math.sin(t), "OilPressure": 4.5})
         ecu.send(can.Message(arbitration_id=msg2.frame_id, data=data2, is_extended_id=False))
 
     # the logger node reads everything waiting on the bus

@@ -203,7 +203,7 @@ Decoded again   : {'EngineSpeed': 6500.0, 'ThrottlePos': 80.0, 'CoolantTemp': 92
 1. Change `EngineSpeed` to **8250** and predict the first two bytes **before** running. *(8250 / 0.25 = 33000 = 0x80E8 → `E8 80`)*
 2. Set `CoolantTemp` to **300** and run. You get an error. **Why?** *(Outside the DBC range −40…215. Good: the tool protects you from impossible values.)*
 3. In `engine.dbc`, **add a signal** `OilPressure` to ENGINE_DATA_2: start bit 16, 8 bits, factor 0.05, offset 0, range 0–12.75, unit "bar". Then encode 4.5 bar. *(Raw should be 90 = 0x5A.)*
-4. Change `@1` to `@0` (Motorola) for EngineSpeed and look how the bytes change. **Then change it back.**
+4. Motorola byte order: change EngineSpeed to `7|16@0+` (start bit 7 **and** `@0`). The bytes become `65 90`. If you only change `@1` to `@0`, cantools reports overlapping signals: in Motorola order the start bit is the **most significant** bit, so start bit 0 runs into byte 2 (ThrottlePos). **Then change it back.**
 
 ---
 

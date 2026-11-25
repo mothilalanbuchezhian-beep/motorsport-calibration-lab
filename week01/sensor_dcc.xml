@@ -1,0 +1,11 @@
+<dcc>
+  <administrativeData>
+    <item>Pressure sensor PT-07, s/n 4471</item>
+    <calibrationDate>2026-09-30</calibrationDate>
+    <nextDue>2027-09-30</nextDue>
+  </administrativeData>
+  <measurementResults>
+    <point ref="100.0" measured="100.4" unit="kPa" uncertainty="0.1"/>
+    <point ref="200.0" measured="200.6" unit="kPa" uncertainty="0.1"/>
+  </measurementResults>
+</dcc>
